@@ -1,0 +1,19 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.8, pytest-8.1.1, pluggy-1.4.0
+rootdir: /home/runner/work/Assessment-Networking-Week-1/Assessment-Networking-Week-1
+collected 56 items
+
+test_challenge_1.py FFFFFFFFFFFFFF                                       [ 25%]
+test_challenge_2.py FFFFFFFFFFFFF                                        [ 48%]
+test_challenge_3.py FFFFFFFFFFFFFF                                       [ 73%]
+test_challenge_4.py FFFFFFFFFFFFFFF                                      [100%]
+
+============================== 56 failed in 2.43s ==============================
+************* Module storetoise_1
+storetoise_1.py:7:0: C0305: Trailing newlines (trailing-newlines)
+storetoise_1.py:3:0: W0611: Unused ArgumentParser imported from argparse (unused-import)
+storetoise_1.py:4:0: W0611: Unused import requests (unused-import)
+
+------------------------------------------------------------------
+Your code has been rated at 0.00/10 (previous run: 0.00/10, +0.00)
+
