@@ -3,17 +3,88 @@ platform linux -- Python 3.11.8, pytest-8.1.1, pluggy-1.4.0
 rootdir: /home/runner/work/Assessment-Networking-Week-1/Assessment-Networking-Week-1
 collected 56 items
 
-test_challenge_1.py FFFFFFFFFFFFFF                                       [ 25%]
-test_challenge_2.py FFFFFFFFFFFFF                                        [ 48%]
+test_challenge_1.py ..............                                       [ 25%]
+test_challenge_2.py .............                                        [ 48%]
 test_challenge_3.py FFFFFFFFFFFFFF                                       [ 73%]
 test_challenge_4.py FFFFFFFFFFFFFFF                                      [100%]
 
-============================== 56 failed in 2.33s ==============================
-************* Module storetoise_1
-storetoise_1.py:7:0: C0305: Trailing newlines (trailing-newlines)
-storetoise_1.py:3:0: W0611: Unused ArgumentParser imported from argparse (unused-import)
-storetoise_1.py:4:0: W0611: Unused import requests (unused-import)
+======================== 29 failed, 27 passed in 10.53s ========================
+************* Module storetoise_3
+storetoise_3.py:125:23: E0001: Parsing failed: 'unterminated string literal (detected at line 125) (storetoise_3, line 125)' (syntax-error)
+************* Module storetoise_4
+storetoise_4.py:130:23: E0001: Parsing failed: 'unterminated string literal (detected at line 130) (storetoise_4, line 130)' (syntax-error)
+************* Module test_challenge_4
+test_challenge_4.py:1:0: R0801: Similar lines in 2 files
+==storetoise_1:[15:39]
+==storetoise_2:[25:49]
+    return None
+
+
+def load_storetoise_data(url: str) -> dict:
+    """Returns the data from the Storetoise API"""
+    response = requests.get(url, timeout=10)
+
+    return response.json()
+
+
+def list_storage_ids(data: dict, number: int | None = None) -> None:
+    """Returns the ids stored in the username"""
+    storage_ids = data["ids"]
+
+    if number:
+        limit = min(number, len(storage_ids))
+        storage_ids = storage_ids[:limit]
+
+    for storage_id in sorted(storage_ids):
+        print(storage_id)
+
+
+def display_messages(data: dict, storage: int) -> None:
+    """Shows the messages in storage id""" (duplicate-code)
+test_challenge_4.py:1:0: R0801: Similar lines in 2 files
+==storetoise_1:[48:58]
+==storetoise_2:[74:85]
+    return parser.parse_args()
+
+
+if __name__ == "__main__":
+    args = command_line_inputs()
+
+    user_url = f"{BASE_URL}/storage/{args.username}"
+    ids_data = load_storetoise_data(user_url)
+
+    list_storage_ids(ids_data, args.number) (duplicate-code)
+test_challenge_4.py:1:0: R0801: Similar lines in 2 files
+==storetoise_1:[39:48]
+==storetoise_2:[61:70]
+    parser = ArgumentParser(description="Storetoise CLI")
+
+    parser.add_argument("--username", "-u", required=True,
+                        help="Username for Storetoise")
+
+    parser.add_argument("--number", "-n",
+                        type=valid_number,
+                        help="Limit the number of results")
+ (duplicate-code)
+test_challenge_4.py:1:0: R0801: Similar lines in 2 files
+==storetoise_1:[5:20]
+==storetoise_2:[5:20]
+BASE_URL = "http://sigma-storetoise-lb-698404422.eu-west-2.elb.amazonaws.com"
+
+
+def valid_number(number: str | None) -> int | None:
+    """Checks if input number is between 0 and 1000"""
+    if number:
+        if number.isdigit() and 0 < int(number) <= 1000:
+            return int(number)
+
+        print("Number must be an integer between 0 and 1000.")
+    return None
+
+
+def valid_storage(storage: str | None) -> int | None:
+    """Checks if input storage is a 3-digit number""" (duplicate-code)
 
 ------------------------------------------------------------------
-Your code has been rated at 0.00/10 (previous run: 0.00/10, +0.00)
+Your code has been rated at 8.21/10 (previous run: 8.21/10, +0.00)
 
